@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For My SONU ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-family: 'Segoe UI', sans-serif;
+
+    /* 💜❤️ Romantic Purple-Red Gradient */
+    background: linear-gradient(135deg, #3a0ca3, #720026, #ff4d6d);
+    background-size: 300% 300%;
+    animation: gradientBG 12s ease infinite;
+
+    color: white;
+    overflow-x: hidden;
+}
+
+/* Gradient animation */
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Pink highlight glow */
+.pink {
+    color: #ff8fab;
+    font-weight: 600;
+    animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 5px #ff8fab; }
+    to { text-shadow: 0 0 18px #ff4d6d; }
+}
+
+/* Floating hearts */
+.heart {
+    position: fixed;
+    bottom: -50px;
+    font-size: 20px;
+    animation: float 6s linear infinite;
+    color: #ff85a2;
+}
+
+@keyframes float {
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(-100vh); opacity: 0; }
+}
+
+/* Sparkles */
+.sparkle {
+    position: fixed;
+    top: -20px;
+    font-size: 14px;
+    color: white;
+    animation: sparkleFall 5s linear infinite;
+}
+
+@keyframes sparkleFall {
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(100vh); opacity: 0; }
+}
+
+/* Floating romantic words */
+.word {
+    position: fixed;
+    font-size: 14px;
+    color: rgba(255,255,255,0.7);
+    animation: floatWord 8s linear infinite;
+}
+
+@keyframes floatWord {
+    0% { transform: translateY(0); opacity: 0; }
+    20% { opacity: 1; }
+    100% { transform: translateY(-100vh); opacity: 0; }
+}
+
+.container {
+    margin-top: 80px;
+    padding-bottom: 80px;
+}
+
+h1 {
+    font-size: 44px;
+}
+
+/* Button */
+button {
+    padding: 15px 25px;
+    font-size: 18px;
+    background: white;
+    color: #720026;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.1);
+    background: #ff8fab;
+    color: white;
+}
+
+/* Typing text */
+#typing {
+    font-size: 26px;
+    margin-top: 25px;
+    min-height: 40px;
+    color: #ff8fab;
+    text-shadow: 0 0 12px rgba(255, 143, 171, 0.8);
+}
+
+/* Message animation */
+.line {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 1s forwards;
+    margin: 10px 0;
+}
+
+.line:nth-child(1) { animation-delay: 1s; }
+.line:nth-child(2) { animation-delay: 2s; }
+.line:nth-child(3) { animation-delay: 3s; }
+.line:nth-child(4) { animation-delay: 4s; }
+.line:nth-child(5) { animation-delay: 5s; }
+.line:nth-child(6) { animation-delay: 6s; }
+.line:nth-child(7) { animation-delay: 7s; }
+
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#message {
+    display: none;
+    margin-top: 25px;
+    font-size: 22px;
+    padding: 0 20px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- 🎶 Add your Bollywood song link -->
+<audio autoplay loop>
+    <source src="music.mp3" type="audio/mp3">
+</audio>
+
+<script>
+// Hearts 💗
+for (let i = 0; i < 35; i++) {
+    let heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "💗";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (3 + Math.random() * 4) + "s";
+    document.body.appendChild(heart);
+}
+
+// Sparkles ✨
+for (let i = 0; i < 25; i++) {
+    let sparkle = document.createElement("div");
+    sparkle.className = "sparkle";
+    sparkle.innerHTML = "✨";
+    sparkle.style.left = Math.random() * 100 + "vw";
+    sparkle.style.animationDuration = (3 + Math.random() * 3) + "s";
+    document.body.appendChild(sparkle);
+}
+
+// Floating words 💕
+let words = ["Sonu 💖", "Love 💕", "Forever ♾️", "My Life ❤️"];
+for (let i = 0; i < 15; i++) {
+    let word = document.createElement("div");
+    word.className = "word";
+    word.innerHTML = words[Math.floor(Math.random() * words.length)];
+    word.style.left = Math.random() * 100 + "vw";
+    word.style.animationDuration = (6 + Math.random() * 4) + "s";
+    document.body.appendChild(word);
+}
+
+// Typing effect
+let text = "SONU... I Love You 💖";
+let i = 0;
+
+function typingEffect() {
+    if (i < text.length) {
+        document.getElementById("typing").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typingEffect, 80);
+    }
+}
+</script>
+
+<div class="container">
+    <h1>Hey <span class="pink">SONU 💖</span></h1>
+    <p>Open this when you're alone 💌</p>
+    <p>– From your <span class="pink">GURU 💜</span></p>
+
+    <button onclick="startLove()">Click Me 💕</button>
+
+    <div id="typing"></div>
+
+    <div id="message">
+        <p class="line">You came into my life and made everything <span class="pink">beautiful 🌸</span></p>        
+        <p class="line">With you, every moment feels <span class="pink">magical ✨</span></p>
+        <p class="line">Your smile is my biggest <span class="pink">happiness 😊</span></p>
+        <p class="line">I promise to love you, respect you, and stand by you<span class="pink"> always 💖</span></p>
+        <p class="line">I fall in love with you more <span class="pink">every day ❤️</span></p>
+        <p class="line">You are my today and all of my <span class="pink">tomorrows 💖</span></p>
+        <p class="line">I can't wait to call you my <span class="pink">wife ❤️</span></p>
+
+        <br><br>
+
+        <p class="line"><b>I love you forever, <span class="pink">SONU 💗</span></b></p>
+        <p class="line">– Yours always, <span class="pink">GURU 💜</span></p>
+    </div>
+</div>
+
+<script>
+function startLove() {
+    typingEffect();
+    document.getElementById("message").style.display = "block";
+}
+</script>
+
+</body>
+</html>
