@@ -11,7 +11,6 @@ body {
     text-align: center;
     font-family: 'Segoe UI', sans-serif;
 
-    /* 💜❤️ Romantic Purple-Red Gradient */
     background: linear-gradient(135deg, #3a0ca3, #720026, #ff4d6d);
     background-size: 300% 300%;
     animation: gradientBG 12s ease infinite;
@@ -20,18 +19,16 @@ body {
     overflow-x: hidden;
 }
 
-/* Gradient animation */
 @keyframes gradientBG {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
 }
 
-/* Pink highlight glow */
 .pink {
     color: #ff8fab;
     font-weight: 600;
-    animation: glow 5s infinite alternate;
+    animation: glow 2s infinite alternate;
 }
 
 @keyframes glow {
@@ -39,27 +36,29 @@ body {
     to { text-shadow: 0 0 18px #ff4d6d; }
 }
 
-/* Floating hearts */
+/* 💗 Hearts */
 .heart {
     position: fixed;
     bottom: -50px;
     font-size: 20px;
-    animation: float 10s linear infinite;
+    animation: float 12s ease-in infinite;
     color: #ff85a2;
+    opacity: 0.7;
 }
 
 @keyframes float {
-    0% { transform: translateY(0); opacity: 1; }
+    0% { transform: translateY(0); opacity: 0; }
+    20% { opacity: 0.8; }
     100% { transform: translateY(-100vh); opacity: 0; }
 }
 
-/* Sparkles */
+/* ✨ Sparkles */
 .sparkle {
     position: fixed;
     top: -20px;
     font-size: 14px;
     color: white;
-    animation: sparkleFall 5s linear infinite;
+    animation: sparkleFall 7s linear infinite;
 }
 
 @keyframes sparkleFall {
@@ -67,12 +66,12 @@ body {
     100% { transform: translateY(100vh); opacity: 0; }
 }
 
-/* Floating romantic words */
+/* 💕 Words */
 .word {
     position: fixed;
     font-size: 14px;
     color: rgba(255,255,255,0.7);
-    animation: floatWord 8s linear infinite;
+    animation: floatWord 10s linear infinite;
 }
 
 @keyframes floatWord {
@@ -90,7 +89,6 @@ h1 {
     font-size: 44px;
 }
 
-/* Button */
 button {
     padding: 15px 25px;
     font-size: 18px;
@@ -109,7 +107,6 @@ button:hover {
     color: white;
 }
 
-/* Typing text */
 #typing {
     font-size: 26px;
     margin-top: 25px;
@@ -118,7 +115,6 @@ button:hover {
     text-shadow: 0 0 12px rgba(255, 143, 171, 0.8);
 }
 
-/* Message animation */
 .line {
     opacity: 0;
     transform: translateY(20px);
@@ -147,45 +143,97 @@ button:hover {
     font-size: 22px;
     padding: 0 20px;
 }
+
+/* 📸 Gallery */
+.gallery {
+    display: none;
+    margin-top: 40px;
+}
+
+.gallery img {
+    width: 200px;
+    height: 250px;
+    object-fit: cover;
+    margin: 10px;
+    border-radius: 20px;
+    box-shadow: 0 0 15px rgba(255, 143, 171, 0.6);
+    transition: 0.4s;
+}
+
+.gallery img:hover {
+    transform: scale(1.1);
+}
 </style>
 </head>
 
 <body>
 
-<!-- 🎶 Add your Bollywood song link -->
-<audio autoplay loop>
-    <source src="music.mp3" type="audio/mp3">
+<!-- 🎶 Background Music -->
+<audio id="bgMusic" autoplay loop muted>
+    <source src="https://raw.githubusercontent.com/ppandharpatte49-dev/guru/main/music.mp3" type="audio/mp3">
 </audio>
 
 <script>
-// Hearts 💗
+// 🎶 AUTOPLAY FIX + FADE-IN
+window.addEventListener("load", () => {
+    let music = document.getElementById("bgMusic");
+
+    music.muted = false;
+    music.volume = 0;
+
+    let playPromise = music.play();
+
+    if (playPromise !== undefined) {
+        playPromise.then(() => {
+            // Fade in volume
+            let vol = 0;
+            let fade = setInterval(() => {
+                if (vol < 0.3) {
+                    vol += 0.02;
+                    music.volume = vol;
+                } else {
+                    clearInterval(fade);
+                }
+            }, 200);
+        }).catch(() => {
+            // Fallback: first user interaction
+            document.body.addEventListener("click", () => {
+                music.muted = false;
+                music.volume = 0.3;
+                music.play();
+            }, { once: true });
+        });
+    }
+});
+
+// 💗 Hearts
 for (let i = 0; i < 35; i++) {
     let heart = document.createElement("div");
     heart.className = "heart";
     heart.innerHTML = "💗";
     heart.style.left = Math.random() * 100 + "vw";
-    heart.style.animationDuration = (3 + Math.random() * 4) + "s";
+    heart.style.animationDuration = (8 + Math.random() * 6) + "s";
     document.body.appendChild(heart);
 }
 
-// Sparkles ✨
+// ✨ Sparkles
 for (let i = 0; i < 25; i++) {
     let sparkle = document.createElement("div");
     sparkle.className = "sparkle";
     sparkle.innerHTML = "✨";
     sparkle.style.left = Math.random() * 100 + "vw";
-    sparkle.style.animationDuration = (3 + Math.random() * 3) + "s";
+    sparkle.style.animationDuration = (5 + Math.random() * 4) + "s";
     document.body.appendChild(sparkle);
 }
 
-// Floating words 💕
+// 💕 Words
 let words = ["Sonu 💖", "Love 💕", "Forever ♾️", "My Life ❤️"];
 for (let i = 0; i < 15; i++) {
     let word = document.createElement("div");
     word.className = "word";
     word.innerHTML = words[Math.floor(Math.random() * words.length)];
     word.style.left = Math.random() * 100 + "vw";
-    word.style.animationDuration = (6 + Math.random() * 4) + "s";
+    word.style.animationDuration = (8 + Math.random() * 5) + "s";
     document.body.appendChild(word);
 }
 
@@ -225,12 +273,18 @@ function typingEffect() {
         <p class="line"><b>I love you forever, <span class="pink">SONU 💗</span></b></p>
         <p class="line">– Yours always, <span class="pink">GURU 💜</span></p>
     </div>
+
+    <!-- 📸 Replace with your GitHub RAW image links -->
+    <div class="gallery">
+        <img src="https://raw.githubusercontent.com/ppandharpatte49-dev/guru/main/IMG_4299.png">	
+    </div>
 </div>
 
 <script>
 function startLove() {
     typingEffect();
     document.getElementById("message").style.display = "block";
+    document.querySelector(".gallery").style.display = "block";
 }
 </script>
 
